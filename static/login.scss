@@ -1,0 +1,48 @@
+$black:#282828;
+$darkgray:#54565b;
+$lightgray:#919396;
+$lightergray:#bcc7cb;
+$lighterrrrrgray:#f4f5f1;
+$lightColor:#e6eaec;
+$lightblue:#c0d3df;
+$darkblue:#667d85;
+$red:#7e102f;
+
+
+.login{
+    padding: 16px; 
+    margin: 10px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+}
+.form-control, .form-control:focus, .form-control:active{
+    border: 1px solid $darkblue ;
+    border-radius: 10px !important;
+    background-color: $lightblue !important;
+    @media only screen and (max-width: 1025px){
+        font-size: 46px;
+        width: 90%;
+    }
+    @media only screen and (min-width: 1025px){
+        font-size: 26px;
+        width: 50%;
+    }
+}
+.save{
+    border-radius: 10px;
+    border: 1px solid $darkblue;
+    @media only screen and (max-width: 1025px){
+        font-size: 36px;
+        background-color: $darkblue;
+        width: 30%;
+    }
+    @media only screen and (min-width: 1025px){
+        font-size: 16px;
+        background-color: $darkblue;
+        width: 10%;
+    }
+}

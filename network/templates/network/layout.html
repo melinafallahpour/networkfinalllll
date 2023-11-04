@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <title>{% block title %}Social Network{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no”>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        {% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">         {% endcomment %}
+        
+        
+        <link href="{% static 'style07.css' %}" rel="stylesheet">
+        <!-- <link href="{% static 'style02.css' %}" rel="stylesheet"> -->
+
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js" integrity="sha512-BmM0/BQlqh02wuK5Gz9yrbe7VyIVwOzD1o40yi1IsTjriX/NGF37NyXHfmFzIlMmoSIBXgqDiG1VNU6kB5dBbA==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+        <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/a61edd6a8b.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        {% block head %}{% endblock %}
+        </head>
+        <body>
+            
+                <svg style="display:none;">
+                    <defs>
+                    <g id="home">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" ></path>
+                            <polyline points="9 22 9 12 15 12 15 22" ></polyline>
+                    </g>
+                    <g id="following">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" ></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" ></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" ></path>
+                    </g>
+                    <g id="profile">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" ></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </g>
+                    <g id="logout">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" ></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </g>
+                    <g id="login">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" ></path>
+                        <polyline points="10 17 15 12 10 7"></polyline>
+                        <line x1="15" y1="12" x2="3" y2="12"></line>
+                    </g>
+                    <g id="register">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="12" y1="8" x2="12" y2="16"></line>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </g>
+                    </defs>
+                </svg>
+                
+                <input type="checkbox" name="" id="checkbox">
+                    <div class="hamburger-lines">
+                        <span class="line line1"></span>
+                        <span class="line line2"></span>
+                        <span class="line line3"></span>
+                    </div>
+                    <nav class="nav__cont">
+                    
+                    <ul class="nav">
+                        <li class="nav__items ">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none" stroke="#e9ece6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                            <use xlink:href="#home"></use>
+                            </svg>
+                            <a href= "{% url 'index' %}">Home</a>
+                        </li>
+                    </ul>
+                    {% if user.is_authenticated %}
+                    <ul class="nav">
+                        <li class="nav__items ">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"  fill="none" stroke="#e9ece6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus">
+                            <use xlink:href="#following"></use>
+                            </svg>
+                            <a href="{% url 'following' username=user.username %}">Followings</a>
+                        </li>
+                            
+                        <li class="nav__items ">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"  fill="none" stroke="#e9ece6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                            <use xlink:href="#profile"></use>
+                            </svg>
+                        <a href="{% url 'profile' username=user.username %}">My Profile</a>
+                        </li>
+                            
+                        <li class="nav__items ">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none" stroke="#e9ece6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
+                                <use xlink:href="#logout"></use>
+                            </svg>
+                            <a href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                    {% else %}
+                    <ul class="nav">
+                        <li class="nav__items ">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"   fill="none" stroke="#e9ece6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-in">
+                                <use xlink:href="#login"></use>
+                            </svg>
+                        <a href="{% url 'login' %}">Login</a>
+                        </li>
+                            
+                        <li class="nav__items ">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none" stroke="#e9ece6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-square">
+                                <use xlink:href="#register"></use>
+                            </svg>
+                            <a href="{% url 'register' %}">Register</a>
+                        </li>
+                    </ul>
+                    {% endif %} 
+                </nav>
+
+                <div class="container">
+                    <div class="body">
+                        {% block body %}
+                        {% endblock %}
+                    </div>
+                </div>
+        
+
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js" integrity="sha512-BmM0/BQlqh02wuK5Gz9yrbe7VyIVwOzD1o40yi1IsTjriX/NGF37NyXHfmFzIlMmoSIBXgqDiG1VNU6kB5dBbA==" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+                
+
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+                
+                
+                <script>
+
+
+                $('.likebutton').click(function(){
+                    var catid;
+                    var total;
+                    var value;
+                    catid = $(this).data("catid");
+
+                    $.ajax(
+                    {
+                        type:"GET",
+                        url: "/likepost",
+                        data:{
+                                post_id: catid
+                        },
+                        success: function( data ) 
+                        {
+                            total = $('#'+ catid).attr("data-total")
+                            if ($('#'+catid).attr("data-value") == 'Like'){
+                                $( '#liked'+catid ).text((parseInt(total) + 1))
+                                $( '#heart'+catid ).css('color', 'red')
+                                $('#'+catid).attr("data-total", parseInt(total) + 1)
+                                $('#'+catid).attr("data-value", 'Unlike')
+                            }
+                            else{
+                                $( '#liked'+catid ).text((parseInt(total) - 1))
+                                $( '#heart'+catid ).css('color', 'black')
+                                $('#'+catid).attr("data-total", parseInt(total) - 1)
+                                $('#'+catid).attr("data-value", 'Like')
+                            }
+                        }
+                    });
+                });
+
+                $('.delete-post').click(function () {
+                    var postId = $(this).data("catid")
+
+                    $.ajax({
+                    type: "POST",
+                    url: `/${postId}/delete`,
+                    data: {
+                        csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,
+                        post_id: postId
+                    },
+                    success: function(data) {
+                        $(`.post-object${postId}`).remove()
+                    }
+                    });
+                });
+
+                $('.edit-post').click(function (event) {
+                    event.preventDefault()
+                    var postId = $(this).data("catid")
+                    var content = $('.textarea-edit').val()
+
+                    $.ajax({
+                    type: "POST",
+                    url: `/posts/${postId}/edit`,
+                    data: {
+                        csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,
+                        post_id: postId,
+                        textarea: content
+                    },
+                    success: function(data) {
+                        $('.modal-edit').modal('hide')
+                        var content = $('.textarea-edit').val()
+                        $(`.post-object-content${postId}`).html(content)
+                    }
+                    });
+                });
+
+                $(function() {
+                    $( 'a[href$="#"]' ).each(function() {
+                        $( this ).attr( 'href','javascript:void(0);' )
+                    });
+                });
+                
+            </script> 
+            <script>
+                $(document).ready(function () {
+                  // Add smooth scrolling to all links
+                    $("a").on("click", function (event) {
+                    // Make sure this.hash has a value before overriding default behavior
+                    if (this.hash !== "") {
+                      // Prevent default anchor click behavior
+                        event.preventDefault();
+            
+                      // Store hash
+                        var hash = this.hash;
+            
+                      // Using jQuery's animate() method to add smooth page scroll
+                      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                        $("html, body").animate(
+                        {
+                            scrollTop: $(hash).offset().top,
+                        },
+                        800,
+                        function () {
+                          // Add hash (#) to URL when done scrolling (default click behavior)
+                            window.location.hash = hash;
+                        }
+                        );
+                    } // End if
+                    });
+                });
+
+                
+                    
+                </script>
+
+        </body>    
+</html>
+
