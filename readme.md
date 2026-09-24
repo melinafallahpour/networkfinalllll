@@ -1,28 +1,30 @@
-# melinafallahpour
+🌐 Network
 
-🌐 Network — Social Network Web Application
+A Twitter-like social network built with Python, Django, JavaScript, HTML, and CSS.
 
-A modern Twitter-like social networking website built with Django, Python, JavaScript, HTML, and CSS.
+Users can create posts, follow other users, like and unlike posts, edit their own posts, and browse personalized feeds.
 
-The application allows users to create posts, follow other users, like posts, edit their own content, and browse personalized feeds.
+🔗 Live Site
 
-🔗 Live Demo: "Network" (https://melinafp.pythonanywhere.com/)
+"Visit the live website" (https://melinafp.pythonanywhere.com/)
 
-🎥 Video Demo: "Watch the Demo" (https://youtu.be/)
+🎥 Video Demo
+
+"Watch the video demonstration" (https://youtu.be/)
 
 ---
 
 ✨ Features
 
-👤 User Authentication
+👤 Authentication
 
 - User registration and login
-- Secure session-based authentication
-- Users can only access authenticated features when signed in
+- Session-based authentication
+- Different functionality for authenticated and anonymous users
 
 📝 Posts
 
-- Create text-based posts
+- Create text posts
 - View posts from all users
 - Posts are displayed in reverse chronological order
 - Edit your own posts
@@ -31,41 +33,41 @@ The application allows users to create posts, follow other users, like posts, ed
 ❤️ Likes
 
 - Like and unlike posts
-- Like counts update dynamically
-- JavaScript communicates with the Django backend without requiring a full page reload
+- Like counts are updated dynamically
+- JavaScript communicates with Django asynchronously
 
-👥 Following System
+👥 Following
 
 - Follow other users
 - Unfollow users
 - View follower and following counts
 - Users cannot follow themselves
-- Personalized Following feed showing posts from followed users
+- Personalized Following feed
 
-👤 User Profiles
+👤 Profiles
 
 Each profile displays:
 
 - Username
 - Number of followers
-- Number of users being followed
+- Number of people being followed
 - Posts created by the user
 - Follow / Unfollow functionality
 
 📄 Pagination
 
-Posts are displayed 10 at a time.
+Posts are displayed 10 per page.
 
-When additional posts are available, users can navigate using:
+Users can navigate between pages using:
 
-- Next
 - Previous
-
-This keeps pages easier to browse and prevents large numbers of posts from being loaded at once.
+- Next
 
 ⚡ Dynamic Interactions
 
-JavaScript is used for actions that don't require a complete page refresh, including:
+JavaScript is used to make parts of the application interactive without requiring a complete page reload.
+
+This includes:
 
 - Editing posts
 - Liking and unliking posts
@@ -73,371 +75,332 @@ JavaScript is used for actions that don't require a complete page refresh, inclu
 
 ---
 
-🛠️ Technology Stack
+🛠️ Technologies
 
 Technology| Purpose
-Python| Main programming language
-Django| Backend web framework
+Python| Backend programming
+Django| Web framework and backend
 JavaScript| Dynamic client-side interactions
 HTML| Page structure
-CSS| Styling and layout
-SQLite| Development database
-Node.js / npm| Front-end package management
+CSS| Styling
+SQLite| Database
+npm| JavaScript package management
 
 ---
 
-🐍 How Django Is Used
+🐍 Django Backend
 
-Django is the main backend framework of this application.
+Django is the main backend framework of the application.
 
-Instead of having JavaScript directly manage the database, Django sits between the website and the database and handles the application's core logic.
+It is responsible for handling the application's URLs, views, database operations, authentication, permissions, and HTML rendering.
 
-The project follows Django's typical structure, with the "network" directory acting as the main application and "project4" containing the project-level configuration.
+The browser communicates with Django through HTTP requests.
 
-A simplified architecture looks like this:
+flowchart TD
+    A[User] --> B[Browser]
+    B -->|HTTP Request| C[Django]
+    C --> D[URL Routing]
+    D --> E[View]
+    E --> F[Django ORM]
+    F --> G[(SQLite Database)]
+    G --> F
+    F --> E
+    E --> H[Template]
+    H --> B
 
-                ┌─────────────────────┐
-                │      Browser        │
-                │ HTML / CSS / JS     │
-                └──────────┬──────────┘
-                           │
-                     HTTP Requests
-                           │
-                           ▼
-                ┌─────────────────────┐
-                │       Django        │
-                │      Backend        │
-                └──────────┬──────────┘
-                           │
-              ┌────────────┼────────────┐
-              │            │            │
-              ▼            ▼            ▼
-           URLs         Views        Models
-              │            │            │
-              │            │            ▼
-              │            │        Database
-              │            │
-              └────────────┴──► Templates
-
-Django's role
-
-Django is responsible for:
-
-1. Receiving requests from the browser
-2. Determining which URL was requested
-3. Running the appropriate view
-4. Reading or modifying data through Django's ORM
-5. Checking authentication and permissions
-6. Rendering HTML templates
-7. Returning responses to the browser
-8. Providing data to JavaScript when asynchronous requests are made
+Django acts as the connection between the frontend and the database.
 
 ---
 
 🧱 Django Project Structure
 
-The repository contains two important Django directories:
+The project contains two important Django components:
 
 networkfinalllll/
 │
 ├── network/
-│   └── ...              # Main Django application
-│
 ├── project4/
-│   └── ...              # Django project configuration
-│
 ├── static/
-│   └── ...              # Static files
-│
-├── db.sqlite3           # SQLite database
-├── manage.py             # Django command-line utility
-├── requirements.txt      # Python dependencies
-│
-├── package.json          # JavaScript dependencies
-└── package-lock.json
+├── manage.py
+├── db.sqlite3
+├── package.json
+├── package-lock.json
+└── requirements.txt
 
 "project4/"
 
-This is the Django project configuration.
+"project4" is the Django project configuration.
 
-It contains the settings and configuration that tell Django how the entire website should operate.
+It contains the configuration required to run the website, including settings and the project's main URL configuration.
 
-For example, Django uses the project configuration to determine things such as:
+In simple terms:
 
-- Installed applications
-- Database configuration
-- URL configuration
-- Static files
-- Templates
-- Middleware
-- Authentication configuration
+«"project4" configures the Django project.»
 
 "network/"
 
-This is the main Django application.
+"network" is the main Django application.
 
-It contains the functionality specific to the social network, such as:
+It contains the functionality of the social network, including:
 
 - Posts
-- Users
+- Profiles
 - Following
 - Likes
-- Profiles
+- Authentication
 - Feed functionality
+- Post editing
 
-This separation is important in Django:
+The relationship between the project and application can be represented as:
 
-«The project ("project4") configures the website, while the app ("network") implements the website's functionality.»
+flowchart LR
+    A[project4<br/>Django Project] --> B[network<br/>Django App]
+    B --> C[Social Network Features]
+    C --> D[Posts]
+    C --> E[Profiles]
+    C --> F[Following]
+    C --> G[Likes]
 
 ---
 
-🔄 How a Request Works
+🔄 Request & Response Flow
 
-For example, when a user opens the All Posts page:
+For example, when a user visits the All Posts page, the request follows Django's request/response cycle.
 
-User
- │
- │ GET request
- ▼
-Django URL configuration
- │
- ▼
-Network view
- │
- ▼
-Django ORM
- │
- ▼
-Database
- │
- ▼
-Posts returned
- │
- ▼
-Django template
- │
- ▼
-HTML response
- │
- ▼
-Browser
+sequenceDiagram
+    participant U as User
+    participant B as Browser
+    participant D as Django
+    participant V as View
+    participant DB as SQLite
 
-The Django ORM (Object-Relational Mapper) allows Python code to work with database records without manually writing SQL for every operation.
+    U->>B: Open All Posts
+    B->>D: GET request
+    D->>V: Route request
+    V->>DB: Request posts
+    DB-->>V: Return posts
+    V-->>D: Render template
+    D-->>B: HTML response
+    B-->>U: Display posts
 
-Conceptually, instead of directly writing SQL such as:
+Django receives the request, determines which view should handle it, retrieves the required information from the database, renders the appropriate template, and returns the resulting HTML to the browser.
 
-SELECT * FROM posts;
+---
 
-Django allows application code to work with database objects through its model/query system.
+🗃️ Django ORM
 
-This makes it easier to retrieve, create, update, and filter application data.
+The application uses Django's Object-Relational Mapper (ORM) to communicate with the database.
+
+The ORM allows Python and Django code to interact with database records without manually writing SQL for every operation.
+
+The relationship looks like this:
+
+flowchart TD
+    A[Django Application] --> B[Django Models]
+    B --> C[Django ORM]
+    C --> D[(SQLite)]
+    D --> E[db.sqlite3]
+
+The database is used to persist information such as users, posts, likes, and relationships between users.
 
 ---
 
 ⚡ Django + JavaScript
 
-One of the important parts of this project is that Django doesn't have to reload the entire page for every action.
+Django handles the backend logic, while JavaScript provides dynamic interactions in the browser.
 
 For example, when a user likes a post:
 
-User clicks "Like"
-        │
-        ▼
-JavaScript event
-        │
-        ▼
-Asynchronous request
-        │
-        ▼
-Django backend
-        │
-        ▼
-Database updated
-        │
-        ▼
-Django sends response
-        │
-        ▼
-JavaScript updates like count
-        │
-        ▼
-Page stays loaded
+sequenceDiagram
+    participant U as User
+    participant JS as JavaScript
+    participant D as Django
+    participant DB as Database
 
-The project specification specifically requires likes and post editing to communicate with the backend asynchronously, allowing the interface to update without a full page reload.
+    U->>JS: Click Like
+    JS->>D: Asynchronous request
+    D->>DB: Update like
+    DB-->>D: Updated data
+    D-->>JS: Response
+    JS-->>U: Update like count
 
-This creates a more responsive user experience while Django remains responsible for the actual data and business logic.
+The entire page does not need to reload.
 
----
+The same approach is used when editing posts.
 
-🗃️ Database
-
-The project includes a SQLite database:
-
-db.sqlite3
-
-The database stores persistent application information such as users, posts, relationships between users, and likes.
-
-Django's ORM provides the layer between Python/Django code and SQLite.
-
-Conceptually:
-
-Django Models
-      │
-      ▼
-Django ORM
-      │
-      ▼
-SQLite
-      │
-      ▼
-db.sqlite3
-
-SQLite is convenient for development and small projects because it does not require a separate database server.
+This creates a more responsive interface while Django remains responsible for the application's logic and database operations.
 
 ---
 
 🔐 Authentication & Permissions
 
-Django's authentication system is used to distinguish between signed-in and anonymous users.
-
-This is particularly important for operations such as:
-
-- Creating posts
-- Editing posts
-- Following users
-- Liking posts
-- Viewing the Following feed
-
-The application also needs to enforce ownership rules on the backend.
+Django's authentication system is used to determine whether a user is signed in and what actions they are allowed to perform.
 
 For example:
 
-User A
-  │
-  ├── owns Post 1
-  │
-  └── can edit Post 1
+flowchart TD
+    A[User] --> B{Authenticated?}
 
-User B
-  │
-  └── cannot edit Post 1
+    B -->|No| C[Public Pages]
+    B -->|Yes| D[Authenticated Features]
 
-This is enforced by Django rather than relying only on hiding an Edit button in the browser.
+    D --> E[Create Post]
+    D --> F[Like Post]
+    D --> G[Follow Users]
+    D --> H[View Following Feed]
+    D --> I[Edit Own Posts]
+
+The application also checks ownership when editing posts.
+
+A user can edit their own post, but another user cannot edit it.
+
+flowchart LR
+    A[User] --> B{Owns Post?}
+    B -->|Yes| C[Allow Editing]
+    B -->|No| D[Reject Editing]
+
+This type of permission is enforced by the backend rather than relying only on hiding an Edit button in the browser.
+
+---
+
+👥 Following System
+
+The following system creates relationships between users.
+
+flowchart LR
+    A[User A] -->|Follows| B[User B]
+    A -->|Follows| C[User C]
+
+    B --> D[Posts]
+    C --> E[Posts]
+
+    D --> F[Following Feed]
+    E --> F
+
+The Following page uses these relationships to display posts from users that the current user follows.
+
+---
+
+❤️ Like System
+
+Likes connect users with posts.
+
+flowchart TD
+    A[User] -->|Likes| B[Post]
+    B --> C[Like Count]
+
+    A -->|Unlikes| B
+    B --> C
+
+JavaScript allows the like state and count to be updated dynamically without reloading the entire page.
 
 ---
 
 📄 Pagination
 
-The application uses pagination for pages containing posts.
+Posts are divided into pages containing 10 posts.
 
-Instead of displaying every post at once:
+flowchart LR
+    A[All Posts] --> B[Page 1<br/>Posts 1-10]
+    A --> C[Page 2<br/>Posts 11-20]
+    A --> D[Page 3<br/>Posts 21-30]
 
-Page 1 → Posts 1–10
-Page 2 → Posts 11–20
-Page 3 → Posts 21–30
+    B <-->|Next / Previous| C
+    C <-->|Next / Previous| D
 
-The project specification requires ten posts per page, with navigation to older and newer pages when appropriate.
-
-Django's pagination functionality can handle this efficiently on the backend.
+Pagination keeps the interface manageable when there are many posts.
 
 ---
 
-🚀 Getting Started
+📁 Project Structure
+
+networkfinalllll/
+│
+├── network/              # Main Django application
+│
+├── project4/             # Django project configuration
+│
+├── static/               # Static files
+│
+├── 1.jpg                 # Project image
+│
+├── db.sqlite3            # SQLite database
+│
+├── manage.py             # Django management utility
+│
+├── package.json          # JavaScript dependencies
+│
+├── package-lock.json     # Locked npm dependencies
+│
+└── requirements.txt      # Python dependencies
+
+---
+
+🚀 Running the Project Locally
 
 1. Clone the repository
 
 git clone https://github.com/melinafallahpour/networkfinalllll.git
 cd networkfinalllll
 
-2. Create a virtual environment
-
-Windows
-
-python -m venv venv
-venv\Scripts\activate
-
-macOS / Linux
-
-python3 -m venv venv
-source venv/bin/activate
-
-3. Install Python dependencies
+2. Install Python dependencies
 
 pip install -r requirements.txt
 
-4. Apply Django migrations
+3. Apply migrations
 
 python manage.py makemigrations
 python manage.py migrate
 
-5. Start the development server
+4. Start the Django development server
 
 python manage.py runserver
 
-The application will normally be available at:
+The website will then be available at:
 
 http://127.0.0.1:8000/
 
 ---
 
-📦 Project Dependencies
+🎯 What This Project Demonstrates
 
-Python dependencies are listed in:
+This project demonstrates the development of a full-stack web application using Django.
 
-requirements.txt
+Key concepts include:
 
-JavaScript dependencies are managed through:
-
-package.json
-package-lock.json
-
-This project therefore combines a Python/Django backend with client-side JavaScript functionality.
-
----
-
-🎯 Project Goals
-
-This project demonstrates how a full-stack web application can be built using Django while combining server-side functionality with client-side JavaScript.
-
-The main concepts demonstrated include:
-
-- Django project/app architecture
+- Django project and app architecture
 - URL routing
 - Views
-- Models and ORM
-- Database relationships
+- Templates
+- Django ORM
+- SQLite
 - Authentication
 - Authorization
-- Templates
-- Static files
-- JavaScript event handling
-- Asynchronous requests
+- User relationships
 - Pagination
-- Social relationships between users
+- JavaScript
+- Asynchronous requests
+- Dynamic page updates
 
----
+The overall architecture can be summarized as:
 
-📚 Learning Outcomes
+flowchart TD
+    A[Frontend<br/>HTML + CSS + JavaScript]
+    B[Django Backend]
+    C[Views]
+    D[Models + ORM]
+    E[(SQLite Database)]
 
-Building this application provides practical experience with the complete request/response cycle:
+    A -->|HTTP Requests| B
+    B --> C
+    C --> D
+    D --> E
+    E --> D
+    D --> C
+    C --> B
+    B -->|HTML / JSON Response| A
 
-Frontend
-   ↓
-HTTP Request
-   ↓
-Django URL
-   ↓
-Django View
-   ↓
-Django ORM
-   ↓
-Database
-   ↓
-Django Response
-   ↓
-Frontend
-
-It also demonstrates how a traditional Django-rendered application can be enhanced with JavaScript to provide dynamic interactions without turning the entire application into a separate frontend framework.
+Django therefore provides the core backend architecture, while JavaScript enhances the frontend with dynamic interactions.
 
 ---
 
@@ -445,10 +408,4 @@ It also demonstrates how a traditional Django-rendered application can be enhanc
 
 Melina Fallahpour
 
-GitHub: "@melinafallahpour" (https://github.com/melinafallahpour)
-
----
-
-📄 License
-
-This project was created as a web development project for learning and demonstrating Django, JavaScript, and full-stack web development.
+"GitHub Profile" (https://github.com/melinafallahpour)
